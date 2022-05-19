@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainCliente">
+   <top>
+      <AnchorPane prefHeight="66.0" prefWidth="800.0" style="-fx-background-color: #b22222;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="239.0" layoutY="19.0" text="Classic Food" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="489.0" layoutY="41.0" text="Lo de siempre, para siempre" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="21.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </top>
+   <left>
+      <AnchorPane prefHeight="378.0" prefWidth="163.0" style="-fx-background-color: c0c0c0;" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnPedido" layoutX="18.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#goHacerPedido" prefHeight="95.0" prefWidth="128.0" style="-fx-background-color: transparent;" text="Realizar un pedido" textAlignment="CENTER" textFill="FIREBRICK" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="21.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnVerPedido" layoutX="20.0" layoutY="230.0" mnemonicParsing="false" onMouseClicked="#goVerPedido" prefHeight="97.0" prefWidth="122.0" style="-fx-background-color: transparent;" text="Ver mis pedidos" textAlignment="CENTER" textFill="FIREBRICK" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="21.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnHome" layoutX="20.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#goHome" prefHeight="97.0" prefWidth="122.0" style="-fx-background-color: transparent;" text="Home" textAlignment="CENTER" textFill="FIREBRICK" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="21.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="378.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="277.0" layoutY="43.0" text="Home" textFill="FIREBRICK">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="31.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+   </center>
+</BorderPane>
