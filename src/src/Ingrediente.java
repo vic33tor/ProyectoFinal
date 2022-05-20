@@ -9,7 +9,6 @@ public class Ingrediente {
 	
 
 	public Ingrediente(Integer id_ingrediente, String nombre, Double cantidad) {
-		super();
 		this.id_ingrediente = id_ingrediente;
 		this.nombre = nombre;
 		this.cantidad = cantidad;

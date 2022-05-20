@@ -112,7 +112,7 @@ public class BBDD {
 
 	}
 
-	public boolean añadirPlato_Bebida(Plato p) {
+	public boolean anhadirPlato_Bebida(Plato p) {
 
 		boolean alta = false;
 
@@ -138,15 +138,37 @@ public class BBDD {
 
 	}
 
-	public boolean eliminarPlato_Bebida(Integer id_plato) {
+	public boolean eliminarPlato_Bebida(String n) {
 
 		boolean alta = false;
 
 		PreparedStatement ps;
 		try {
 
-			ps = conexion.prepareStatement("delete PLATOS_BEBIDAS where ID_PLATO = (?)");
-			ps.setInt(1, id_plato);
+			ps = conexion.prepareStatement("delete PLATOS_BEBIDAS where NOMBRE = (?)");
+			ps.setString(1, n);
+			ps.executeUpdate();
+
+			alta = true;
+
+		} catch (SQLException e) {
+			System.out.println("no se han borrado los datos");
+			e.printStackTrace();
+			alta = false;
+			return alta;
+		}
+		return alta;
+
+	}
+	public boolean eliminarIngrediente(String n) {
+
+		boolean alta = false;
+
+		PreparedStatement ps;
+		try {
+
+			ps = conexion.prepareStatement("delete INGREDIENTES where NOMBRE = (?)");
+			ps.setString(1, n);
 			ps.executeUpdate();
 
 			alta = true;
@@ -284,7 +306,7 @@ public class BBDD {
 
 
 	}
-	
+
 	public String mostrarDniAdmin(String c) {
 
 		String lista = "";
@@ -301,5 +323,68 @@ public class BBDD {
 			e.getStackTrace();
 			return null;
 		}
+	}
+
+	public int mostrarID_PLATO() {
+
+		int id = 0;
+
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery("select MAX(ID_PLATO) from PLATOS_BEBIDAS");
+			while(rs.next()) {
+				id = rs.getInt(1);
+			}
+			return id +1;
+
+
+		} catch (SQLException e) {
+			e.getStackTrace();
+			return 1;
+		}
+	}
+
+	public int mostrarID_Ingrediente() {
+
+		int id = 0;
+
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery("select MAX(ID_INGREDIENTE) from INGREDIENTES");
+			while(rs.next()) {
+				id = rs.getInt(1);
+			}
+			return id +1;
+
+
+		} catch (SQLException e) {
+			e.getStackTrace();
+			return 1;
+		}
+	}
+	
+	public boolean anhadirIngrediente(Ingrediente i) {
+
+		boolean alta = false;
+
+		PreparedStatement ps;
+		try {
+
+			ps = conexion.prepareStatement("insert into INGREDIENTES values(?,?,?)");
+			ps.setInt(1, i.getId_ingrediente());
+			ps.setString(2, i.getNombre());
+			ps.setDouble(3, i.getCantidad());
+			ps.executeUpdate();
+
+			alta = true;
+
+		} catch (SQLException e) {
+			System.out.println("no se han insertar los datos");
+			e.printStackTrace();
+			alta = false;
+			return alta;
+		}
+		return alta;
+
 	}
 }
