@@ -30,11 +30,11 @@ public class AnhadirPlato {
 	@FXML private void Anhadir(MouseEvent event) {
 		if(!txtNombre.getText().isEmpty() && !txtPrecio.getText().isEmpty() && setBox(event).equals("Plato")) {
 			Double precio = Double.valueOf(txtPrecio.getText());
-			Plato p = new Plato(bd.mostrarID_PLATO(), txtNombre.getText(), precio, "COMIDA");
+			Plato p = new Plato(bd.mostrarMAXID_PLATO(), txtNombre.getText(), precio, "COMIDA");
 			bd.anhadirPlato_Bebida(p);
 		}else if(!txtNombre.getText().isEmpty() && !txtPrecio.getText().isEmpty() && setBox(event).equals("Ingrediente")){
 			Double cantidad = Double.valueOf(txtPrecio.getText());
-			Ingrediente i = new Ingrediente(bd.mostrarID_Ingrediente(), txtNombre.getText(), cantidad);
+			Ingrediente i = new Ingrediente(bd.mostrarMAXID_Ingrediente(), txtNombre.getText(), cantidad);
 			bd.anhadirIngrediente(i);
 		}else {
 			JOptionPane.showMessageDialog(null, "Rellene todos los campos para continuar");

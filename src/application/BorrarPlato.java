@@ -23,6 +23,7 @@ public class BorrarPlato {
 	
 	@FXML private void Borrar(MouseEvent event) {
 		if(!txtNombre.getText().isEmpty() && setBox(event).equals("Plato")) {
+			bd.eliminarPlato_Ingrediente(bd.mostrarID_Plato(txtNombre.getText()));
 			bd.eliminarPlato_Bebida(txtNombre.getText());
 		}else if(!txtNombre.getText().isEmpty() &&  setBox(event).equals("Ingrediente")){
 			bd.eliminarIngrediente(txtNombre.getText());

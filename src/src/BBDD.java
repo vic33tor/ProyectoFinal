@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class BBDD {
 
@@ -40,24 +41,24 @@ public class BBDD {
 		}
 	}
 
-	public String mostrarPlatos() {
+	public ArrayList <String> mostrarNombrePlatos() {
 
 		PreparedStatement ps;
-		String lista = "";
+		ArrayList <String> lista = new ArrayList <String>();
 
 		try {
-			ps = conexion.prepareStatement("select * from PLATOS_BEBIDAS where TIPO = 'COMIDA'");
+			ps = conexion.prepareStatement("select NOMBRE from PLATOS_BEBIDAS where TIPO = 'COMIDA'");
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
 
-				lista += "Nombre del plato " + rs.getString(3) + " Precio = " + rs.getDouble(2) + "\n";
+				lista.add(rs.getString(1));
 
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return "La lista no se ha podido cargar";
+			return null;
 		}
 
 		return lista;
@@ -183,7 +184,7 @@ public class BBDD {
 
 	}
 
-	public boolean modificarPrecio(Integer id_plato, Double precio_nuevo) {
+	public boolean modificarPrecio(int id_plato, Double precio_nuevo) {
 
 		boolean alta = false;
 
@@ -325,7 +326,7 @@ public class BBDD {
 		}
 	}
 
-	public int mostrarID_PLATO() {
+	public int mostrarMAXID_PLATO() {
 
 		int id = 0;
 
@@ -344,7 +345,7 @@ public class BBDD {
 		}
 	}
 
-	public int mostrarID_Ingrediente() {
+	public int mostrarMAXID_Ingrediente() {
 
 		int id = 0;
 
@@ -380,6 +381,89 @@ public class BBDD {
 
 		} catch (SQLException e) {
 			System.out.println("no se han insertar los datos");
+			e.printStackTrace();
+			alta = false;
+			return alta;
+		}
+		return alta;
+
+	}
+	public boolean darAltaPLATO_INGRED(int i,int p, String c) {
+
+		boolean alta = false;
+
+		PreparedStatement ps;
+		try {
+
+			ps = conexion.prepareStatement("insert into PLATO_INGREDIENTE values(?,?,?)");
+			ps.setInt(1, Integer.valueOf(i));
+			ps.setInt(2, p);
+			ps.setDouble(3, Double.valueOf(c));
+			ps.executeUpdate();
+
+			alta = true;
+
+		} catch (SQLException e) {
+			System.out.println("no se han insertar los datos");
+			e.printStackTrace();
+			alta = false;
+			return alta;
+		}
+		return alta;
+
+	}
+	
+	public int mostrarID_Plato(String p) {
+
+		int id = 0;
+
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery("select ID_PLATO from PLATOS_BEBIDAS where NOMBRE = '"+p+"'");
+			while(rs.next()) {
+				id = rs.getInt(1);
+			}
+			return id;
+
+
+		} catch (SQLException e) {
+			e.getStackTrace();
+			return 0;
+		}
+	}
+	
+	public int mostrarID_Ingrediente(String i) {
+
+		int id = 0;
+
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery("select ID_INGREDIENTE from INGREDIENTES where NOMBRE = '"+i+"'");
+			while(rs.next()) {
+				id = rs.getInt(1);
+			}
+			return id;
+
+
+		} catch (SQLException e) {
+			e.getStackTrace();
+			return 0;
+		}
+	}
+	public boolean eliminarPlato_Ingrediente(int p) {
+
+		boolean alta = false;
+
+		PreparedStatement ps;
+		try {
+
+			ps = conexion.prepareStatement("delete PLATO_INGREDIENTE where ID_PLATO ='"+p+"'");
+			ps.executeUpdate();
+
+			alta = true;
+
+		} catch (SQLException e) {
+			System.out.println("no se han borrado los datos");
 			e.printStackTrace();
 			alta = false;
 			return alta;

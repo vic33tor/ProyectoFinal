@@ -57,22 +57,6 @@ public class Cliente{
 		this.contraseña = contraseña;
 	}
 
-	public void realizarPedido() {
-		System.out.println("Estos son los platos de la carta:");
-		bd.mostrarPlatos();
-		System.out.println("Estos son las bebidas de la carta:");
-		bd.mostrarBebidas();
-		String nombre_plato;
-		do {
-			System.out.println("Seleccione un plato o una bebida escribiendo su nombre(Presione 0 para salir)");
-			nombre_plato = sc.next();
-			
-
-		}while(!nombre_plato.equals(0));
-		//DUDA CON COMO OBTENER EL OBJETO CON EL ID
-	}
-	public void Oferta() {
-
-	}
+	
 
 }
