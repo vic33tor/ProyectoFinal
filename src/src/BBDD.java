@@ -15,6 +15,9 @@ public class BBDD {
 	private String contraseña = "Proyecto";
 	java.sql.Statement st = null;
 	java.sql.ResultSet rs = null;
+	
+	public static Cliente c;
+	public static Pedido p;
 
 
 	public BBDD(){
@@ -470,5 +473,91 @@ public class BBDD {
 		}
 		return alta;
 
+	}
+	
+	public Double mostrarPrecio(String s) {
+
+		Double precio = 0.0;
+
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery("select PRECIO from PLATOS_BEBIDAS where NOMBRE = '"+s+"'");
+			while(rs.next()) {
+				precio = rs.getDouble("PRECIO");
+			}
+			return precio;
+
+		} catch (SQLException e) {
+			e.getStackTrace();
+			return null;
+		}
+	}
+	
+	public boolean darAltaPedido(Pedido p) {
+
+		boolean alta = false;
+
+		PreparedStatement ps;
+		try {
+
+			ps = conexion.prepareStatement("insert into PEDIDOS values(?,SYSDATE,?,?,?)");
+			ps.setInt(1, p.getId_pedido());
+			ps.setDouble(2, p.getPrecio());
+			ps.setString(3, p.getDni_motorista());
+			ps.setString(4, p.getDni_cliente()); 
+			ps.executeUpdate();
+
+			alta = true;
+
+		} catch (SQLException e) {
+			System.out.println("no se han insertar los datos");
+			e.printStackTrace();
+			alta = false;
+			return alta;
+		}
+		return alta;
+
+	}
+	
+	public boolean darAltaPedido_Plato(int id_pedido, int id_plato, int cantidad) {
+
+		boolean alta = false;
+
+		PreparedStatement ps;
+		try {
+
+			ps = conexion.prepareStatement("insert into PEDIDO_PLATO values(?,?,?)");
+			ps.setInt(1, id_pedido);
+			ps.setInt(2, id_plato);
+			ps.setInt(3, cantidad);
+			ps.executeUpdate();
+
+			alta = true;
+
+		} catch (SQLException e) {
+			System.out.println("no se han insertar los datos");
+			e.printStackTrace();
+			alta = false;
+			return alta;
+		}
+		return alta;
+
+	}
+	public ArrayList <String> mostrarINGREDIENTES_PLATO(int i) {
+
+		ArrayList <String> lista = new ArrayList <String>();
+
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery("SELECT NOMBRE FROM INGREDIENTES JOIN PLATO_INGREDIENTE ON INGREDIENTES.ID_INGREDIENTE = PLATO_INGREDIENTE.ID_INGREDIENTE WHERE ID_PLATO = '"+i+"'");
+			while(rs.next()) {
+				lista.add(rs.getString("NOMBRE"));
+			}
+			return lista;
+
+		} catch (SQLException e) {
+			e.getStackTrace();
+			return null;
+		}
 	}
 }

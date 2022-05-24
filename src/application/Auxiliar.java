@@ -9,22 +9,20 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 
-public class MainCliente {
-	
-	@FXML Button btnHome, btnPedido, btnVerPedido;
-	@FXML BorderPane bp;
-	
-	@FXML private void goHome(MouseEvent event) {
-		loadpage("HomeCliente");
-	}
-	@FXML private void goHacerPedido(MouseEvent event) {
-		loadpage("RealizarPedido");
-	}
-	@FXML private void goVerPedido(MouseEvent event) {
-		loadpage("VerPedidos");
-	}
-	
-	void loadpage(String page) {
+public class Auxiliar {
+
+    @FXML private Button btnNo;
+    @FXML private Button btnSi;
+    @FXML BorderPane bp;
+
+    @FXML void goPagar(MouseEvent event) {
+    	loadpage("Pagar");
+    }
+
+    @FXML void goQuitarIngrediente(MouseEvent event) {
+    	loadpage("QuitarIngrediente");
+    }
+    void loadpage(String page) {
 		Parent root = null;
 		try {
 			root = FXMLLoader.load(getClass().getResource(page+".fxml"));
@@ -37,5 +35,3 @@ public class MainCliente {
 	}
 
 }
-
-

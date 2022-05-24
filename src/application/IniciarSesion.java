@@ -25,7 +25,7 @@ public class IniciarSesion {
 	@FXML private void goMain(MouseEvent event) {
 		if(!txtEmail1.getText().isEmpty() && !txtContraseña1.getText().isEmpty()) {
 			if(bd.mostrarEmail(txtEmail1.getText()) && bd.mostrarContraseña(txtEmail1.getText(), txtContraseña1.getText())) {
-			Cliente c = new Cliente(bd.mostrarDni(txtEmail1.getText()), txtEmail1.getText(),bd.mostrarDireccion(txtEmail1.getText()), txtContraseña1.getText());
+			bd.c = new Cliente(bd.mostrarDni(txtEmail1.getText()), txtEmail1.getText(),bd.mostrarDireccion(txtEmail1.getText()), txtContraseña1.getText());
 			loadpage("MainCliente");
 			}
 			else {

@@ -26,8 +26,8 @@ public class Registrarse {
 	@FXML private void goMain(MouseEvent event) {
 		if(!txtDni.getText().isEmpty() && !txtEmail.getText().isEmpty() &&
 				!txtContraseña.getText().isEmpty() && !txtDireccion.getText().isEmpty()) {
-			Cliente c = new Cliente(txtDni.getText(), txtEmail.getText(),txtDireccion.getText(), txtContraseña.getText());
-			bd.darAltaCliente(c);
+			bd.c = new Cliente(txtDni.getText(), txtEmail.getText(),txtDireccion.getText(), txtContraseña.getText());
+			bd.darAltaCliente(bd.c);
 			loadpage("MainCliente");
 		}else {
 			JOptionPane.showMessageDialog(null, "Rellene todos los campos para continuar");

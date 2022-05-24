@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HacerPedido">
+   <center>
+      <AnchorPane prefHeight="378.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="211.0" layoutY="48.0" text="Realizar pedido" textFill="FIREBRICK">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="31.0" />
+               </font>
+            </Label>
+            <Label layoutX="132.0" layoutY="108.0" text="Nombre" textFill="FIREBRICK">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="boxNombre" layoutX="132.0" layoutY="124.0" onAction="#setTextPrecio" onMouseClicked="#setBox" prefHeight="26.0" prefWidth="399.0" style="-fx-background-color: #b22222;" />
+            <Label layoutX="136.0" layoutY="192.0" text="Precio:" textFill="FIREBRICK">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+               </font>
+            </Label>
+            <Text fx:id="txtPrecio" fontSmoothingType="LCD" layoutX="433.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="58.4000244140625">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <Button fx:id="btnComprar" layoutX="158.0" layoutY="256.0" mnemonicParsing="false" onMouseClicked="#comprarPlato" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #b22222; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-border-color: black;" text="Comprar" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnPagar" layoutX="363.0" layoutY="256.0" mnemonicParsing="false" onMouseClicked="#goPagar" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #b22222; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-border-color: black;" text="Ir a pagar" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

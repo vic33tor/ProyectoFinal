@@ -6,7 +6,7 @@ public class Pedido {
 
 	private Integer id_pedido;
 
-	private Date fecha;
+	private String fecha;
 
 	private Double precio;
 	
@@ -15,7 +15,7 @@ public class Pedido {
 	private String dni_cliente;
 	
 
-	public Pedido(Integer id_pedido, Date fecha, Double precio, String dni_motorista, String dni_cliente) {
+	public Pedido(Integer id_pedido, String fecha, Double precio, String dni_motorista, String dni_cliente) {
 		super();
 		this.id_pedido = id_pedido;
 		this.fecha = fecha;
@@ -32,10 +32,10 @@ public class Pedido {
 		this.id_pedido = id_pedido;
 	}
 
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
 	public Double getPrecio() {

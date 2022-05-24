@@ -20,7 +20,7 @@ public class CPrecio {
     BBDD bd = new BBDD();
     
     @FXML private void cambiarPrecio(MouseEvent event) {
-    	if(!txtPrecio.getText().isEmpty() && !setBox(event).equals("")) {
+    	if(!txtPrecio.getText().isEmpty() && setBox(event) != null) {
 			bd.modificarPrecio(bd.mostrarID_Plato(String.valueOf(setBox(event))), Double.valueOf(txtPrecio.getText()));
 			
 		}else {

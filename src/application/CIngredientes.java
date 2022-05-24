@@ -22,7 +22,7 @@ public class CIngredientes {
     BBDD bd = new BBDD();
     
     @FXML private void cambiarIngredientes(MouseEvent event) {
-    	if(!txtIngredientes.getText().isEmpty() && !txtCantidad.getText().isEmpty() && !setBox(event).equals("")) {
+    	if(!txtIngredientes.getText().isEmpty() && !txtCantidad.getText().isEmpty() && setBox(event) != null) {
 			String[] ingredientes = txtIngredientes.getText().split(",");
 			String[] cantidad = txtCantidad.getText().split(",");
 			bd.eliminarPlato_Ingrediente(bd.mostrarID_Plato(String.valueOf(setBox(event))));

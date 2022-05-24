@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Auxiliar">
+   <center>
+      <AnchorPane prefHeight="378.0" prefWidth="640.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" layoutX="14.0" layoutY="45.0" prefHeight="96.0" prefWidth="627.0" text="¿Quieres quitar algun ingrediente de algun plato?" textFill="FIREBRICK" wrapText="true">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="26.0" />
+               </font>
+            </Label>
+            <Button fx:id="btnSi" layoutX="132.0" layoutY="189.0" mnemonicParsing="false" onMouseClicked="#goQuitarIngrediente" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #b22222; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-border-color: black;" text="Si" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnNo" layoutX="387.0" layoutY="189.0" mnemonicParsing="false" onMouseClicked="#goPagar" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #b22222; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-border-color: black;" text="No" textFill="WHITE">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

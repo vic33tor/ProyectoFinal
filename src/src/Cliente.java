@@ -1,6 +1,7 @@
 package src;
 
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Cliente{
@@ -14,6 +15,9 @@ public class Cliente{
 	private String direccion;
 
 	private String contraseña;
+	
+	public ArrayList <String> platos = new ArrayList <String>();
+	public ArrayList <Double> precio = new ArrayList <Double>();
 	
 	BBDD bd = new BBDD();
 
