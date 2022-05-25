@@ -17,8 +17,9 @@ public class Cliente{
 	private String contraseña;
 	
 	public ArrayList <String> platos = new ArrayList <String>();
-	public ArrayList <Double> precio = new ArrayList <Double>();
-	
+	public ArrayList <String> bebidas = new ArrayList <String>();
+	public ArrayList <Double> precio_platos = new ArrayList <Double>();
+	public ArrayList <Double> precio_bebidas= new ArrayList <Double>();
 	BBDD bd = new BBDD();
 
 

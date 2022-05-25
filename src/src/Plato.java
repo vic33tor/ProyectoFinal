@@ -11,6 +11,8 @@ public class Plato {
 	private Double precio;
 
 	private String tipo;
+	
+	public ArrayList<String> ingredientes_borrar = new ArrayList<String>();
 
 
 	public Plato(Integer id_plato,String nombre, Double precio, String tipo) {

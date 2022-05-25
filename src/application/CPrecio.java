@@ -31,7 +31,7 @@ public class CPrecio {
     }
     
     @FXML private Object setBox(MouseEvent event) {
-		ObservableList<String> list = FXCollections.observableArrayList(bd.mostrarNombrePlatos());
+		ObservableList<String> list = FXCollections.observableArrayList(bd.mostrarPlatos_Bebidas());
 		boxNombre.setItems(list);
 		Object s = boxNombre.getValue();
 		return s;

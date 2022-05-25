@@ -18,6 +18,8 @@ public class BBDD {
 	
 	public static Cliente c;
 	public static Pedido p;
+	public static Plato plato;
+	public static ArrayList<Plato> lista_platos = new ArrayList<Plato>();
 
 
 	public BBDD(){
@@ -67,24 +69,23 @@ public class BBDD {
 		return lista;
 	}
 
-	public String mostrarBebidas() {
+	public ArrayList <String> mostrarPlatos_Bebidas() {
 
 		PreparedStatement ps;
-		String lista = "";
-
+		ArrayList <String> lista = new ArrayList <String>();
 		try {
-			ps = conexion.prepareStatement("select * from PLATOS_BEBIDAS where TIPO = 'BEBIDA'");
+			ps = conexion.prepareStatement("select NOMBRE from PLATOS_BEBIDAS");
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
 
-				lista += "Nombre de la bebida " + rs.getString(3) + " Precio = " + rs.getDouble(2) + "\n";
+				lista.add(rs.getString(1));
 
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return "La lista no se ha podido cargar";
+			return null;
 		}
 
 		return lista;
@@ -554,6 +555,23 @@ public class BBDD {
 				lista.add(rs.getString("NOMBRE"));
 			}
 			return lista;
+
+		} catch (SQLException e) {
+			e.getStackTrace();
+			return null;
+		}
+	}
+	public String mostrarTipo(String s) {
+
+		String tipo = "";
+
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery("select TIPO from PLATOS_BEBIDAS where NOMBRE = '"+s+"'");
+			while(rs.next()) {
+				tipo = rs.getString("TIPO");
+			}
+			return tipo;
 
 		} catch (SQLException e) {
 			e.getStackTrace();
