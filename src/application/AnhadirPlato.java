@@ -30,7 +30,7 @@ public class AnhadirPlato {
 	@FXML private void Anhadir(MouseEvent event) {
 		if(!txtNombre.getText().isEmpty() && !txtPrecio.getText().isEmpty() && setBox(event).equals("Plato")) {
 			Double precio = Double.valueOf(txtPrecio.getText());
-			Plato p = new Plato(bd.mostrarMAXID_PLATO(), txtNombre.getText(), precio, "COMIDA");
+			Plato p = new Plato(bd.mostrarMAXID_PLATO(), txtNombre.getText(), precio, "COMIDA",0);
 			bd.anhadirPlato_Bebida(p);
 		}else if(!txtNombre.getText().isEmpty() && !txtPrecio.getText().isEmpty() && setBox(event).equals("Ingrediente")){
 			Double cantidad = Double.valueOf(txtPrecio.getText());

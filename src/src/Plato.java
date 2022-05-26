@@ -12,14 +12,17 @@ public class Plato {
 
 	private String tipo;
 	
+	private int numero_pedido;
+	
 	public ArrayList<String> ingredientes_borrar = new ArrayList<String>();
 
 
-	public Plato(Integer id_plato,String nombre, Double precio, String tipo) {
+	public Plato(Integer id_plato,String nombre, Double precio, String tipo, int numero_pedido) {
 		this.id_plato = id_plato;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.tipo = tipo;
+		this.numero_pedido = numero_pedido;
 	}
 
 	public Integer getId_plato() {
@@ -54,6 +57,21 @@ public class Plato {
 		this.tipo = tipo;
 	}
 	
+	public int getNumero_pedido() {
+		return numero_pedido;
+	}
+
+	public void setNumero_pedido(int numero_pedido) {
+		this.numero_pedido = numero_pedido;
+	}
+
+	@Override
+	public String toString() {
+		return "Plato [id_plato=" + id_plato + ", nombre=" + nombre + ", precio=" + precio + ", tipo=" + tipo
+				+ ", numero_pedido=" + numero_pedido + "]";
+	}
+
+
 	
 
 

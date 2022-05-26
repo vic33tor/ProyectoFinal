@@ -2,6 +2,7 @@ package src;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Cliente{
@@ -16,10 +17,7 @@ public class Cliente{
 
 	private String contraseña;
 	
-	public ArrayList <String> platos = new ArrayList <String>();
-	public ArrayList <String> bebidas = new ArrayList <String>();
-	public ArrayList <Double> precio_platos = new ArrayList <Double>();
-	public ArrayList <Double> precio_bebidas= new ArrayList <Double>();
+	public HashMap<Integer, Plato> platos = new HashMap<Integer, Plato>();
 	BBDD bd = new BBDD();
 
 

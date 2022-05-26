@@ -7,37 +7,36 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Pagar">
    <center>
       <AnchorPane prefHeight="378.0" prefWidth="640.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="277.0" layoutY="44.0" text="Pagar" textFill="FIREBRICK">
+            <Label layoutX="270.0" layoutY="30.0" text="Pagar" textFill="FIREBRICK">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="31.0" />
                </font>
             </Label>
-            <Text fx:id="txtPlatos" fontSmoothingType="LCD" layoutX="97.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Platos" wrappingWidth="58.4000244140625">
+            <Text fx:id="txtPlatos" fontSmoothingType="LCD" layoutX="44.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Platos" wrappingWidth="376.0">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Text fx:id="txtPrecio" fontSmoothingType="LCD" layoutX="462.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio" wrappingWidth="58.4000244140625">
+            <Text fx:id="txtPrecio" fontSmoothingType="LCD" layoutX="474.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio" wrappingWidth="91.20001220703125">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Text fx:id="txtTotal" fontSmoothingType="LCD" layoutX="97.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" wrappingWidth="58.4000244140625">
+            <Text fx:id="txtTotal" fontSmoothingType="LCD" layoutX="55.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" wrappingWidth="58.4000244140625">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Text fx:id="txtPrecioTotal" fontSmoothingType="LCD" layoutX="462.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio_Total" wrappingWidth="58.4000244140625">
+            <Text fx:id="txtPrecioTotal" fontSmoothingType="LCD" layoutX="474.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Precio_Total" wrappingWidth="58.4000244140625">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Text>
-            <Button fx:id="btnPagar" layoutX="270.0" layoutY="283.0" mnemonicParsing="false" onMouseClicked="#pagar" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #b22222; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-border-color: black;" text="Pagar" textFill="WHITE">
+            <Button fx:id="btnPagar" layoutX="263.0" layoutY="284.0" mnemonicParsing="false" onMouseClicked="#pagar" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #b22222; -fx-border-radius: 5px; -fx-background-radius: 5px; -fx-border-color: black;" text="Pagar" textFill="WHITE">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="14.0" />
                </font>

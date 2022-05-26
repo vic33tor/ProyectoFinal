@@ -19,7 +19,7 @@ public class BBDD {
 	public static Cliente c;
 	public static Pedido p;
 	public static Plato plato;
-	public static ArrayList<Plato> lista_platos = new ArrayList<Plato>();
+	public static Integer contador = 1;
 
 
 	public BBDD(){
@@ -577,5 +577,31 @@ public class BBDD {
 			e.getStackTrace();
 			return null;
 		}
+	}
+	
+	public Plato mostrarTodo_Plato(String n) {
+
+		PreparedStatement ps;
+		Plato pl = null;
+
+		try {
+			ps = conexion.prepareStatement("select * from PLATOS_BEBIDAS where NOMBRE = '"+n+"'");
+			rs = ps.executeQuery();
+			
+
+			while (rs.next()) {
+
+
+				pl = new Plato(rs.getInt(1),rs.getString(3),rs.getDouble(2),rs.getString(4), contador);
+				
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+		return pl;
 	}
 }

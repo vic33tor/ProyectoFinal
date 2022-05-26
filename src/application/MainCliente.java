@@ -8,16 +8,21 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import src.BBDD;
 
 public class MainCliente {
 	
 	@FXML Button btnHome, btnPedido, btnVerPedido;
 	@FXML BorderPane bp;
 	
+	BBDD bd = new BBDD();
+	
 	@FXML private void goHome(MouseEvent event) {
 		loadpage("HomeCliente");
 	}
 	@FXML private void goHacerPedido(MouseEvent event) {
+		bd.c.platos.clear();
+		bd.contador = 1;
 		loadpage("RealizarPedido");
 	}
 	@FXML private void goVerPedido(MouseEvent event) {
