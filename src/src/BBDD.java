@@ -1,10 +1,12 @@
 package src;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class BBDD {
@@ -261,9 +263,9 @@ public class BBDD {
 
 		try {
 			Statement st = conexion.createStatement();
-			ResultSet rs = st.executeQuery("select DNI from CLIENTES where EMAIL = '"+s+"'");
+			ResultSet rs = st.executeQuery("select DNI_CLIENTE from CLIENTES where EMAIL = '"+s+"'");
 			while(rs.next()) {
-				lista = rs.getString("DNI");
+				lista = rs.getString("DNI_CLIENTE");
 			}
 			return lista;
 
@@ -604,4 +606,174 @@ public class BBDD {
 
 		return pl;
 	}
+	
+	public boolean anhadirPedido(Pedido p) {
+
+		boolean alta = false;
+
+		PreparedStatement ps;
+		try {
+
+			ps = conexion.prepareStatement("insert into PEDIDOS values(?,?,?,?,?)");
+			ps.setInt(1, p.getId_pedido());
+			ps.setDate(2, Date.valueOf(p.getFecha()));
+			ps.setDouble(3, p.getPrecio());
+			ps.setString(4, p.getDni_motorista());
+			ps.setString(5, p.getDni_cliente());
+			ps.executeUpdate();
+
+			alta = true;
+
+		} catch (SQLException e) {
+			System.out.println("no se han insertar los datos");
+			e.printStackTrace();
+			alta = false;
+			return alta;
+		}
+		return alta;
+
+	}
+	
+	public String mostrarDni_motorista() {
+
+		String DNI = "";
+
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery("select DNI_MOTORISTA from MOTORISTAS order by NUM_PEDIDOS DESC");
+			while(rs.next()) {
+				DNI = rs.getString("DNI_MOTORISTA");
+			}
+			return DNI;
+
+		} catch (SQLException e) {
+			e.getStackTrace();
+			return null;
+		}
+	}
+	
+	public int mostrarMAXID_PEDIDO() {
+
+		int id = 0;
+
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery("select MAX(ID_PEDIDO) from PEDIDOS");
+			while(rs.next()) {
+				id = rs.getInt(1);
+			}
+			return id +1;
+
+
+		} catch (SQLException e) {
+			e.getStackTrace();
+			return 1;
+		}
+	}
+	public boolean anhadirPedido_Plato(int id_pedido, int id_plato, int cantidad) {
+
+		boolean alta = false;
+
+		PreparedStatement ps;
+		try {
+
+			ps = conexion.prepareStatement("insert into PEDIDO_PLATO values(?,?,?)");
+			ps.setInt(1, id_pedido);
+			ps.setInt(2, id_plato);
+			ps.setInt(3, cantidad);
+			ps.executeUpdate();
+
+			alta = true;
+
+		} catch (SQLException e) {
+			System.out.println("no se han insertar los datos");
+			alta = false;
+			return alta;
+		}
+		return alta;
+
+	}
+	public boolean modificarCantidad(int cantidad_ingrediente,int id_ingrediente) {
+
+		boolean alta = false;
+
+		PreparedStatement ps;
+		try {
+
+			ps = conexion.prepareStatement("update INGREDIENTES set CANTIDAD = CANTIDAD - (?) where ID_INGREDIENTE = (?)");
+			ps.setDouble(1, cantidad_ingrediente);
+			ps.setInt(2, id_ingrediente);
+			ps.executeUpdate();
+
+			alta = true;
+
+		} catch (SQLException e) {
+			System.out.println("no se han modificado los datos");
+			e.printStackTrace();
+			alta = false;
+			return alta;
+		}
+		return alta;
+
+	}
+	public int mostrarCantidadIngrediente(int id_plato,int id_ingrediente) {
+
+		int cantidad = 0;
+
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery("select CANTIDAD_INGREDIENTE from PLATO_INGREDIENTE where ID_INGREDIENTE = '"+id_ingrediente+"' and ID_PLATO = '"+id_ingrediente+"'");
+			while(rs.next()) {
+				cantidad = rs.getInt("CANTIDAD_INGREDIENTE");
+			}
+			return cantidad;
+
+		} catch (SQLException e) {
+			e.getStackTrace();
+			return 0;
+		}
+	}
+	
+	public boolean modificarNum_pedidos(int num_pedidos,String dni) {
+
+		boolean alta = false;
+
+		PreparedStatement ps;
+		try {
+
+			ps = conexion.prepareStatement("update MOTORISTAS set NUM_PEDIDOS = NUM_PEDIDOS+(?) where DNI_MOTORISTA = (?)");
+			ps.setInt(1, num_pedidos);
+			ps.setString(2, dni);
+			ps.executeUpdate();
+
+			alta = true;
+
+		} catch (SQLException e) {
+			System.out.println("no se han modificado los datos");
+			e.printStackTrace();
+			alta = false;
+			return alta;
+		}
+		return alta;
+
+	}
+	
+	public int mostrarNum_pedidos(String dni) {
+
+		int num = 0;
+
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery("select NUM_PEDIDOS from MOTORISTAS where DNI_MOTORISTA = '"+dni+"'");
+			while(rs.next()) {
+				num = rs.getInt(1);
+			}
+			return num+1;
+
+		} catch (SQLException e) {
+			e.getStackTrace();
+			return 1;
+		}
+	}
+	
 }

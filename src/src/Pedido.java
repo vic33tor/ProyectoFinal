@@ -1,12 +1,13 @@
 package src;
 import java.sql.Date;
+import java.time.LocalDate;
 
 
 public class Pedido {
 
 	private Integer id_pedido;
 
-	private String fecha;
+	private LocalDate fecha;
 
 	private Double precio;
 	
@@ -15,10 +16,10 @@ public class Pedido {
 	private String dni_cliente;
 	
 
-	public Pedido(Integer id_pedido, String fecha, Double precio, String dni_motorista, String dni_cliente) {
+	public Pedido(Integer id_pedido, LocalDate localDate, Double precio, String dni_motorista, String dni_cliente) {
 		super();
 		this.id_pedido = id_pedido;
-		this.fecha = fecha;
+		this.fecha = localDate;
 		this.precio = precio;
 		this.dni_motorista = dni_motorista;
 		this.dni_cliente = dni_cliente;
@@ -32,10 +33,10 @@ public class Pedido {
 		this.id_pedido = id_pedido;
 	}
 
-	public String getFecha() {
+	public LocalDate getFecha() {
 		return fecha;
 	}
-	public void setFecha(String fecha) {
+	public void setFecha(LocalDate fecha) {
 		this.fecha = fecha;
 	}
 	public Double getPrecio() {
