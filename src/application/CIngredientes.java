@@ -27,7 +27,12 @@ public class CIngredientes {
 			String[] cantidad = txtCantidad.getText().split(",");
 			bd.eliminarPlato_Ingrediente(bd.mostrarID_Plato(String.valueOf(setBox(event))));
 			for(int i = 0; i<ingredientes.length; i++) {
-			bd.darAltaPLATO_INGRED(bd.mostrarID_Ingrediente(ingredientes[i]), bd.mostrarID_Plato(String.valueOf(setBox(event))), cantidad[i]);
+				if(bd.mostrarID_Ingrediente(ingredientes[i])>0) {
+					bd.darAltaPLATO_INGRED(bd.mostrarID_Ingrediente(ingredientes[i]), bd.mostrarID_Plato(String.valueOf(setBox(event))), cantidad[i]);
+				}else {
+					JOptionPane.showMessageDialog(null, "Ingrediente no existente en la base de datos");
+				}
+			
 			}
 			
 		}else {

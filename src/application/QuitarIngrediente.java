@@ -51,7 +51,7 @@ public class QuitarIngrediente {
 		String []nom_plato = setBoxPlato(event);
 		ObservableList<String> list = FXCollections.observableArrayList(bd.mostrarINGREDIENTES_PLATO(bd.mostrarID_Plato(nom_plato[1])));
 			for (int i = 0; i<bd.c.platos.size(); i++) {
-				if(bd.c.platos.get(i).ingredientes_borrar != null && bd.c.platos.get(i).getNumero_pedido() == Integer.valueOf(nom_plato[0])) {
+				if(bd.c.platos.get(i).ingredientes_borrar.size()>0 && bd.c.platos.get(i).getNumero_pedido() == Integer.valueOf(nom_plato[0])) {
 					list.removeAll(bd.c.platos.get(i).ingredientes_borrar);
 				}
 			}

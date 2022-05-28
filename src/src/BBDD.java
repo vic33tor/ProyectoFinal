@@ -17,7 +17,7 @@ public class BBDD {
 	private String contraseña = "Proyecto";
 	java.sql.Statement st = null;
 	java.sql.ResultSet rs = null;
-	
+
 	public static Cliente c;
 	public static Pedido p;
 	public static Plato plato;
@@ -369,7 +369,7 @@ public class BBDD {
 			return 1;
 		}
 	}
-	
+
 	public boolean anhadirIngrediente(Ingrediente i) {
 
 		boolean alta = false;
@@ -418,7 +418,7 @@ public class BBDD {
 		return alta;
 
 	}
-	
+
 	public int mostrarID_Plato(String p) {
 
 		int id = 0;
@@ -437,7 +437,7 @@ public class BBDD {
 			return 0;
 		}
 	}
-	
+
 	public int mostrarID_Ingrediente(String i) {
 
 		int id = 0;
@@ -477,7 +477,7 @@ public class BBDD {
 		return alta;
 
 	}
-	
+
 	public Double mostrarPrecio(String s) {
 
 		Double precio = 0.0;
@@ -495,7 +495,7 @@ public class BBDD {
 			return null;
 		}
 	}
-	
+
 	public boolean darAltaPedido(Pedido p) {
 
 		boolean alta = false;
@@ -521,7 +521,7 @@ public class BBDD {
 		return alta;
 
 	}
-	
+
 	public boolean darAltaPedido_Plato(int id_pedido, int id_plato, int cantidad) {
 
 		boolean alta = false;
@@ -580,7 +580,7 @@ public class BBDD {
 			return null;
 		}
 	}
-	
+
 	public Plato mostrarTodo_Plato(String n) {
 
 		PreparedStatement ps;
@@ -589,13 +589,13 @@ public class BBDD {
 		try {
 			ps = conexion.prepareStatement("select * from PLATOS_BEBIDAS where NOMBRE = '"+n+"'");
 			rs = ps.executeQuery();
-			
+
 
 			while (rs.next()) {
 
 
 				pl = new Plato(rs.getInt(1),rs.getString(3),rs.getDouble(2),rs.getString(4), contador);
-				
+
 
 			}
 
@@ -606,7 +606,7 @@ public class BBDD {
 
 		return pl;
 	}
-	
+
 	public boolean anhadirPedido(Pedido p) {
 
 		boolean alta = false;
@@ -633,7 +633,7 @@ public class BBDD {
 		return alta;
 
 	}
-	
+
 	public String mostrarDni_motorista() {
 
 		String DNI = "";
@@ -651,7 +651,7 @@ public class BBDD {
 			return null;
 		}
 	}
-	
+
 	public int mostrarMAXID_PEDIDO() {
 
 		int id = 0;
@@ -693,7 +693,7 @@ public class BBDD {
 		return alta;
 
 	}
-	public boolean modificarCantidad(int cantidad_ingrediente,int id_ingrediente) {
+	public boolean modificarCantidad(Double cantidad_ingrediente,int id_ingrediente) {
 
 		boolean alta = false;
 
@@ -716,24 +716,24 @@ public class BBDD {
 		return alta;
 
 	}
-	public int mostrarCantidadIngrediente(int id_plato,int id_ingrediente) {
+	public Double mostrarCantidadIngrediente(int id_plato,int id_ingrediente) {
 
-		int cantidad = 0;
+		Double cantidad = 0.0;
 
 		try {
 			Statement st = conexion.createStatement();
-			ResultSet rs = st.executeQuery("select CANTIDAD_INGREDIENTE from PLATO_INGREDIENTE where ID_INGREDIENTE = '"+id_ingrediente+"' and ID_PLATO = '"+id_ingrediente+"'");
+			ResultSet rs = st.executeQuery("select CANTIDAD_INGREDIENTE from PLATO_INGREDIENTE where ID_INGREDIENTE = '"+id_ingrediente+"' and ID_PLATO = '"+id_plato+"'");
 			while(rs.next()) {
-				cantidad = rs.getInt("CANTIDAD_INGREDIENTE");
+				cantidad = rs.getDouble("CANTIDAD_INGREDIENTE");
 			}
 			return cantidad;
 
 		} catch (SQLException e) {
 			e.getStackTrace();
-			return 0;
+			return 0.0;
 		}
 	}
-	
+
 	public boolean modificarNum_pedidos(int num_pedidos,String dni) {
 
 		boolean alta = false;
@@ -757,7 +757,7 @@ public class BBDD {
 		return alta;
 
 	}
-	
+
 	public int mostrarNum_pedidos(String dni) {
 
 		int num = 0;
@@ -775,5 +775,89 @@ public class BBDD {
 			return 1;
 		}
 	}
-	
+
+	public Double mostrarCantidadIngredienteAlmacen(int id_ingrediente) {
+
+		Double cantidad = 0.0;
+
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery("select CANTIDAD from INGREDIENTES where ID_INGREDIENTE = '"+id_ingrediente+"'");
+			while(rs.next()) {
+				cantidad = rs.getDouble("CANTIDAD");
+			}
+			return cantidad;
+
+		} catch (SQLException e) {
+			e.getStackTrace();
+			return 0.0;
+		}
+	}
+	public boolean ComprarIngrediente(Double cantidad_ingrediente,int id_ingrediente) {
+
+		boolean alta = false;
+
+		PreparedStatement ps;
+		try {
+
+			ps = conexion.prepareStatement("update INGREDIENTES set CANTIDAD = (?) where ID_INGREDIENTE = (?)");
+			ps.setDouble(1, cantidad_ingrediente);
+			ps.setInt(2, id_ingrediente);
+			ps.executeUpdate();
+
+			alta = true;
+
+		} catch (SQLException e) {
+			System.out.println("no se han modificado los datos");
+			e.printStackTrace();
+			alta = false;
+			return alta;
+		}
+		return alta;
+
+	}
+
+	public ArrayList <String> mostrarPedido(String i) {
+
+		ArrayList <String> lista = new ArrayList <String>();
+		String pedido = "";
+
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery("SELECT ID_PEDIDO, FECHA, PRECIO FROM PEDIDOS WHERE DNI_CLIENTE = '"+i+"'");
+			while(rs.next()) {
+				pedido = String.valueOf(rs.getInt("ID_PEDIDO"))+","+String.valueOf(rs.getDate("FECHA"))+","+String.valueOf(rs.getDouble("PRECIO"));
+				lista.add(pedido);
+			}
+			return lista;
+
+		} catch (SQLException e) {
+			e.getStackTrace();
+			return null;
+		}
+	}
+
+	public ArrayList <String> mostrarPlato(int id) {
+
+		ArrayList <String> lista = new ArrayList <String>();
+		String plato ="";
+
+		try {
+			Statement st = conexion.createStatement();
+			ResultSet rs = st.executeQuery("SELECT NOMBRE, PRECIO FROM PLATOS_BEBIDAS JOIN PEDIDO_PLATO ON PLATOS_BEBIDAS.ID_PLATO = PEDIDO_PLATO.ID_PLATO WHERE ID_PEDIDO = '"+id+"'");
+
+			while (rs.next()) {
+				plato = rs.getString("NOMBRE")+","+String.valueOf(rs.getDouble("PRECIO"));
+				lista.add(plato);
+
+
+			}
+			return lista;
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
 }
