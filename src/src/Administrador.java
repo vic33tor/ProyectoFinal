@@ -1,15 +1,19 @@
 package src;
 
 
-
-public class Aministrador {
+/**
+ * clase del usuario administrador
+ * @author víctor
+ *
+ */
+public class Administrador {
 	
 	private String dni_admin;
 
 	private String contraseña;
 
 
-	public Aministrador(String dni_admin, String contraseña) {
+	public Administrador(String dni_admin, String contraseña) {
 		this.dni_admin = dni_admin;
 		this.contraseña = contraseña;
 	}
@@ -32,11 +36,6 @@ public class Aministrador {
 	}
 
 	
-	public void comprarIngredientes(Ingrediente x) {
-		if(x.Cantidad_suficiente() == false) {
-			x.setCantidad(2000.00);
-		}
-	}
 	
 	
 

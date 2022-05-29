@@ -2,7 +2,11 @@ package src;
 import java.sql.Date;
 import java.time.LocalDate;
 
-
+/**
+ * clase de los pedidos 
+ * @author víctor
+ *
+ */
 public class Pedido {
 
 	private Integer id_pedido;

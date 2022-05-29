@@ -1,12 +1,5 @@
 package application;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -15,7 +8,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
 import src.BBDD;
-
+/**
+ * clase controladora de la interfaz VerPedidos
+ * @author víctor
+ *
+ */
 public class VerPedidos implements Initializable{
 
 	@FXML
@@ -23,16 +20,18 @@ public class VerPedidos implements Initializable{
 
 	BBDD bd = new BBDD();
 
-
+	/**
+	 * metodo que al inicar la interfaz seteea el texto txtPedido con todos los pedidos del cliente
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		ArrayList <String> lista_pedidos = new ArrayList <String>();
 		ArrayList <String> lista_platos = new ArrayList <String>();
 		String textofinal="";
 		int contador = 0;
-			if(bd.mostrarPedido(bd.c.getDni_cliente()).size()<=0) {
-				txtPedido.setText("No hay pedidos realizados en este momento");
-			}else {
+		if(bd.mostrarPedido(bd.c.getDni_cliente()).size()<=0) {
+			txtPedido.setText("No hay pedidos realizados en este momento");
+		}else {
 			lista_pedidos = bd.mostrarPedido(bd.c.getDni_cliente());
 			while(contador<lista_pedidos.size()) {
 				String[]un_pedido = lista_pedidos.get(contador).split(",");
@@ -47,7 +46,7 @@ public class VerPedidos implements Initializable{
 				textofinal = textofinal + "---------------------------------------------------------\n";
 			}
 			txtPedido.setText(textofinal);
-			}
+		}
 
 	}
 

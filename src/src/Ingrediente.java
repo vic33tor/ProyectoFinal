@@ -1,26 +1,26 @@
 package src;
+/**
+ * clase de los ingredientes 
+ * @author víctor
+ *
+ */
 public class Ingrediente {
-
-	private Integer id_ingrediente;
-
-	private String nombre;
-
-	private Double cantidad;
 	
-
-	public Ingrediente(Integer id_ingrediente, String nombre, Double cantidad) {
+	int id_ingrediente;
+	String nombre;
+	double cantidad;
+	
+	public Ingrediente(int id_ingrediente, String nombre, double cantidad) {
 		this.id_ingrediente = id_ingrediente;
 		this.nombre = nombre;
 		this.cantidad = cantidad;
 	}
 
-
-	public Integer getId_ingrediente() {
+	public int getId_ingrediente() {
 		return id_ingrediente;
 	}
 
-
-	public void setId_ingrediente(Integer id_ingrediente) {
+	public void setId_ingrediente(int id_ingrediente) {
 		this.id_ingrediente = id_ingrediente;
 	}
 
@@ -32,23 +32,20 @@ public class Ingrediente {
 		this.nombre = nombre;
 	}
 
-	public Double getCantidad() {
+	public double getCantidad() {
 		return cantidad;
 	}
 
-
-	public void setCantidad(Double cantidad) {
+	public void setCantidad(double cantidad) {
 		this.cantidad = cantidad;
 	}
 
-
-	public boolean Cantidad_suficiente() {
-		if(cantidad<100) {
-			return false;
-		}
-		else {
-			return true;
-		}
+	@Override
+	public String toString() {
+		return "Ingrediente [id_ingrediente=" + id_ingrediente + ", nombre=" + nombre + ", cantidad=" + cantidad + "]";
 	}
+	
+	
+	
 
 }

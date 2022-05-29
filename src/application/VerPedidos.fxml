@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="640.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18" fx:controller="application.VerPedidos">
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerPedidos">
   <content>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="378.0" prefWidth="640.0">
          <children>
@@ -15,7 +15,7 @@
                   <Font name="Berlin Sans FB Demi Bold" size="31.0" />
                </font>
             </Label>
-            <Text fx:id="txtPedido" layoutX="148.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pedidos" textAlignment="CENTER" wrappingWidth="344.89076232910156">
+            <Text fx:id="txtPedido" layoutX="148.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pedidos" textAlignment="CENTER" wrappingWidth="344.89076232910156">
                <font>
                   <Font name="Berlin Sans FB Demi Bold" size="14.0" />
                </font>

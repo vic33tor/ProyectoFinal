@@ -1,7 +1,11 @@
 package src;
 
 import java.util.ArrayList;
-
+/**
+ * clase de los platos
+ * @author víctor
+ *
+ */
 public class Plato {
 
 	private Integer id_plato;
@@ -13,7 +17,9 @@ public class Plato {
 	private String tipo;
 	
 	private int numero_pedido;
-	
+	/**
+	 * lista que indica los ingredientes que no se van a utilizar en este plato en un pedido determinado
+	 */
 	public ArrayList<String> ingredientes_borrar = new ArrayList<String>();
 
 

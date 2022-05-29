@@ -4,7 +4,11 @@ package src;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-
+/**
+ * clase del usuario cliente
+ * @author víctor
+ *
+ */
 public class Cliente{
 
 	Scanner sc = new Scanner(System.in);
@@ -16,7 +20,9 @@ public class Cliente{
 	private String direccion;
 
 	private String contraseña;
-	
+	/**
+	 * una lista de los platos que esta comprando en ese momento
+	 */
 	public HashMap<Integer, Plato> platos = new HashMap<Integer, Plato>();
 	BBDD bd = new BBDD();
 

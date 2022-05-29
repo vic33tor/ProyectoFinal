@@ -8,7 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
+/**
+ * Clase para acceder a la base de datos
+ * @author víctor
+ *
+ */
 public class BBDD {
 
 	private final String url = "jdbc:oracle:thin:@localhost:1521/xe";
@@ -47,7 +51,10 @@ public class BBDD {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * 
+	 * @return devuelve una lista de todos los platos de la base de datos
+	 */
 	public ArrayList <String> mostrarNombrePlatos() {
 
 		PreparedStatement ps;
@@ -70,7 +77,10 @@ public class BBDD {
 
 		return lista;
 	}
-
+	/**
+	 * 
+	 * @return devuelve una lista de todos los platos y bebidas de la base de datos
+	 */
 	public ArrayList <String> mostrarPlatos_Bebidas() {
 
 		PreparedStatement ps;
@@ -92,7 +102,11 @@ public class BBDD {
 
 		return lista;
 	}
-
+	/**
+	 * 
+	 * @param c un objeto de la clase cliente
+	 * @return devuelve un boolean que indica si se ha insertado el cliente en la base de datos o no
+	 */
 	public boolean darAltaCliente(Cliente c) {
 
 		boolean alta = false;
@@ -118,7 +132,11 @@ public class BBDD {
 		return alta;
 
 	}
-
+	/**
+	 * 
+	 * @param p un objeto de la clase plato
+	 * @return devuelve un boolean que indica si se ha insertado el plato o la bebida en la base de datos o no
+	 */
 	public boolean anhadirPlato_Bebida(Plato p) {
 
 		boolean alta = false;
@@ -144,7 +162,11 @@ public class BBDD {
 		return alta;
 
 	}
-
+	/**
+	 * 
+	 * @param n el nombre del plato a eliminar
+	 * @return devuelve un boolean que indica si se ha borrado el plato de la base de datos o no
+	 */
 	public boolean eliminarPlato_Bebida(String n) {
 
 		boolean alta = false;
@@ -167,6 +189,11 @@ public class BBDD {
 		return alta;
 
 	}
+	/**
+	 * 
+	 * @param n el nombre del ingrediente a eliminar
+	 * @return devuelve un boolean que indica si se ha borrado el ingrediente de la base de datos o no
+	 */
 	public boolean eliminarIngrediente(String n) {
 
 		boolean alta = false;
@@ -189,7 +216,12 @@ public class BBDD {
 		return alta;
 
 	}
-
+	/**
+	 * 
+	 * @param id_plato el id del plato a cambiar
+	 * @param precio_nuevo el precio a cambiar
+	 * @return devuelve un boolean que indica si se ha modificado el precio del plato en la base de datos o no
+	 */
 	public boolean modificarPrecio(int id_plato, Double precio_nuevo) {
 
 		boolean alta = false;
@@ -213,7 +245,11 @@ public class BBDD {
 		return alta;
 
 	}
-
+	/**
+	 * 
+	 * @param s el email del cliente 
+	 * @return devuelve un boolean que indica si el email existe en la base de datos
+	 */
 	public boolean mostrarEmail(String s) {
 
 		String lista = "";
@@ -236,7 +272,12 @@ public class BBDD {
 	}
 
 
-
+	/**
+	 * 
+	 * @param s el email del cliente
+	 * @param c la contraseña del cliente
+	 * @return devuelve un boolean que indica si ese email tiene esa contraseña en la base de datos
+	 */
 	public boolean mostrarContraseña(String s, String c) {
 
 		String lista = "";
@@ -257,6 +298,11 @@ public class BBDD {
 			return false;
 		}
 	}
+	/**
+	 * 
+	 * @param s el email del cliente
+	 * @return devuelve el dni del cliente 
+	 */
 	public String mostrarDni(String s) {
 
 		String lista = "";
@@ -274,6 +320,11 @@ public class BBDD {
 			return null;
 		}
 	}
+	/**
+	 * 
+	 * @param s el email del cliente
+	 * @return devuelve la direccion del cliente
+	 */
 	public String mostrarDireccion(String s) {
 
 		String lista = "";
@@ -291,6 +342,11 @@ public class BBDD {
 			return null;
 		}
 	}
+	/**
+	 * 
+	 * @param c la contraseña del administrador
+	 * @return devuelve un boolean que indica si la contraseña es la del administrador en la base de datos
+	 */
 	public boolean mostrarContraseñaAdmin(String c) {
 
 		String lista = "";
@@ -313,7 +369,11 @@ public class BBDD {
 
 
 	}
-
+	/**
+	 * 
+	 * @param c la contraseña del administrador
+	 * @return devuleve el dni del administrador 
+	 */
 	public String mostrarDniAdmin(String c) {
 
 		String lista = "";
@@ -331,7 +391,10 @@ public class BBDD {
 			return null;
 		}
 	}
-
+	/**
+	 * 
+	 * @return devuelve el id de plato mas alto + 1
+	 */
 	public int mostrarMAXID_PLATO() {
 
 		int id = 0;
@@ -350,7 +413,10 @@ public class BBDD {
 			return 1;
 		}
 	}
-
+	/**
+	 * 
+	 * @return devuelve el id de ingrediente mas alto + 1
+	 */
 	public int mostrarMAXID_Ingrediente() {
 
 		int id = 0;
@@ -369,7 +435,11 @@ public class BBDD {
 			return 1;
 		}
 	}
-
+	/**
+	 * 
+	 * @param i un objeto de la clase ingrediente
+	 * @return devuelve un boolean que indica si se ha insertado el ingrediente en la base de datos
+	 */
 	public boolean anhadirIngrediente(Ingrediente i) {
 
 		boolean alta = false;
@@ -394,6 +464,13 @@ public class BBDD {
 		return alta;
 
 	}
+	/**
+	 * 
+	 * @param i id del ingrediente
+	 * @param p id del plato
+	 * @param c cantidad que lleva ese plato de ese ingrediente
+	 * @return devuelve un boolean que indica si se ha realizado el insert en la tabla plato_ingrediente en la base de datos
+	 */
 	public boolean darAltaPLATO_INGRED(int i,int p, String c) {
 
 		boolean alta = false;
@@ -418,7 +495,11 @@ public class BBDD {
 		return alta;
 
 	}
-
+	/**
+	 * 
+	 * @param p nombre del plato
+	 * @return devuelve el id del plato
+	 */
 	public int mostrarID_Plato(String p) {
 
 		int id = 0;
@@ -437,7 +518,11 @@ public class BBDD {
 			return 0;
 		}
 	}
-
+	/**
+	 * 
+	 * @param i nombre del ingrediente
+	 * @return devuelve el id del ingrediente
+	 */
 	public int mostrarID_Ingrediente(String i) {
 
 		int id = 0;
@@ -456,6 +541,11 @@ public class BBDD {
 			return 0;
 		}
 	}
+	/**
+	 * 
+	 * @param p id del plato
+	 * @return devuelve un boolean que indica si se ha hecho el delete en la tabla plato_ingrediente en la base de datos
+	 */
 	public boolean eliminarPlato_Ingrediente(int p) {
 
 		boolean alta = false;
@@ -477,7 +567,11 @@ public class BBDD {
 		return alta;
 
 	}
-
+	/**
+	 * 
+	 * @param s nombre del plato
+	 * @return devuelve el precio del plato
+	 */
 	public Double mostrarPrecio(String s) {
 
 		Double precio = 0.0;
@@ -495,57 +589,12 @@ public class BBDD {
 			return null;
 		}
 	}
-
-	public boolean darAltaPedido(Pedido p) {
-
-		boolean alta = false;
-
-		PreparedStatement ps;
-		try {
-
-			ps = conexion.prepareStatement("insert into PEDIDOS values(?,SYSDATE,?,?,?)");
-			ps.setInt(1, p.getId_pedido());
-			ps.setDouble(2, p.getPrecio());
-			ps.setString(3, p.getDni_motorista());
-			ps.setString(4, p.getDni_cliente()); 
-			ps.executeUpdate();
-
-			alta = true;
-
-		} catch (SQLException e) {
-			System.out.println("no se han insertar los datos");
-			e.printStackTrace();
-			alta = false;
-			return alta;
-		}
-		return alta;
-
-	}
-
-	public boolean darAltaPedido_Plato(int id_pedido, int id_plato, int cantidad) {
-
-		boolean alta = false;
-
-		PreparedStatement ps;
-		try {
-
-			ps = conexion.prepareStatement("insert into PEDIDO_PLATO values(?,?,?)");
-			ps.setInt(1, id_pedido);
-			ps.setInt(2, id_plato);
-			ps.setInt(3, cantidad);
-			ps.executeUpdate();
-
-			alta = true;
-
-		} catch (SQLException e) {
-			System.out.println("no se han insertar los datos");
-			e.printStackTrace();
-			alta = false;
-			return alta;
-		}
-		return alta;
-
-	}
+	
+	/**
+	 * 
+	 * @param i id del plato
+	 * @return devuelve una lista de nombres de ingredientes que estan en el plato
+	 */
 	public ArrayList <String> mostrarINGREDIENTES_PLATO(int i) {
 
 		ArrayList <String> lista = new ArrayList <String>();
@@ -563,6 +612,11 @@ public class BBDD {
 			return null;
 		}
 	}
+	/**
+	 * 
+	 * @param s nombre del plato
+	 * @return devuelve si es un plato o una bebida
+	 */
 	public String mostrarTipo(String s) {
 
 		String tipo = "";
@@ -580,7 +634,11 @@ public class BBDD {
 			return null;
 		}
 	}
-
+	/**
+	 * 
+	 * @param n nombre del plato
+	 * @return devuelve un objeto plato
+	 */
 	public Plato mostrarTodo_Plato(String n) {
 
 		PreparedStatement ps;
@@ -606,7 +664,11 @@ public class BBDD {
 
 		return pl;
 	}
-
+	/**
+	 * 
+	 * @param p objeto de la clase pedido
+	 * @return devuelve un boolean que indica si se ha insertado el pedido en la base de datos
+	 */
 	public boolean anhadirPedido(Pedido p) {
 
 		boolean alta = false;
@@ -633,7 +695,10 @@ public class BBDD {
 		return alta;
 
 	}
-
+	/**
+	 * 
+	 * @return devuelve el dni de motorista que menos pedidos lleva realizados
+	 */
 	public String mostrarDni_motorista() {
 
 		String DNI = "";
@@ -651,7 +716,10 @@ public class BBDD {
 			return null;
 		}
 	}
-
+	/**
+	 * 
+	 * @return devuelve el id de pedido mas alto + 1
+	 */
 	public int mostrarMAXID_PEDIDO() {
 
 		int id = 0;
@@ -670,6 +738,13 @@ public class BBDD {
 			return 1;
 		}
 	}
+	/**
+	 * 
+	 * @param id_pedido id del pedido
+	 * @param id_plato id del plato
+	 * @param cantidad cantidad de ese plato en el pedido
+	 * @return devuelve un boolean que indica si se ha insertado el pedido y el plato en la base de datos
+	 */
 	public boolean anhadirPedido_Plato(int id_pedido, int id_plato, int cantidad) {
 
 		boolean alta = false;
@@ -693,6 +768,12 @@ public class BBDD {
 		return alta;
 
 	}
+	/**
+	 * 
+	 * @param cantidad_ingrediente cantidad que se va a restar del ingrediente
+	 * @param id_ingrediente id del ingrediente
+	 * @return devuelve un boolean que indica si se ha realizado el update en la base de datos
+	 */
 	public boolean modificarCantidad(Double cantidad_ingrediente,int id_ingrediente) {
 
 		boolean alta = false;
@@ -716,6 +797,12 @@ public class BBDD {
 		return alta;
 
 	}
+	/**
+	 * 
+	 * @param id_plato id del plato
+	 * @param id_ingrediente id del ingrediente
+	 * @return devuelve la cantidad que hay del ingrediente en el plato
+	 */
 	public Double mostrarCantidadIngrediente(int id_plato,int id_ingrediente) {
 
 		Double cantidad = 0.0;
@@ -733,8 +820,12 @@ public class BBDD {
 			return 0.0;
 		}
 	}
-
-	public boolean modificarNum_pedidos(int num_pedidos,String dni) {
+	/**
+	 * 
+	 * @param dni dni del motorista
+	 * @return devuelve un boolean que indica si se han modificado el numero de pedidos del motorista
+	 */
+	public boolean modificarNum_pedidos(String dni) {
 
 		boolean alta = false;
 
@@ -742,7 +833,7 @@ public class BBDD {
 		try {
 
 			ps = conexion.prepareStatement("update MOTORISTAS set NUM_PEDIDOS = NUM_PEDIDOS+(?) where DNI_MOTORISTA = (?)");
-			ps.setInt(1, num_pedidos);
+			ps.setInt(1, 1);
 			ps.setString(2, dni);
 			ps.executeUpdate();
 
@@ -757,25 +848,11 @@ public class BBDD {
 		return alta;
 
 	}
-
-	public int mostrarNum_pedidos(String dni) {
-
-		int num = 0;
-
-		try {
-			Statement st = conexion.createStatement();
-			ResultSet rs = st.executeQuery("select NUM_PEDIDOS from MOTORISTAS where DNI_MOTORISTA = '"+dni+"'");
-			while(rs.next()) {
-				num = rs.getInt(1);
-			}
-			return num+1;
-
-		} catch (SQLException e) {
-			e.getStackTrace();
-			return 1;
-		}
-	}
-
+	/**
+	 * 
+	 * @param id_ingrediente id del ingrediente
+	 * @return devuelve la cantidad de ese ingrediente existente en la base de datos
+	 */
 	public Double mostrarCantidadIngredienteAlmacen(int id_ingrediente) {
 
 		Double cantidad = 0.0;
@@ -793,6 +870,12 @@ public class BBDD {
 			return 0.0;
 		}
 	}
+	/**
+	 * 
+	 * @param cantidad_ingrediente la cantidad que se va a comprar
+	 * @param id_ingrediente el id del ingrediente
+	 * @return devueleve un boolean que indica si se ha realizado el update del ingrediente
+	 */
 	public boolean ComprarIngrediente(Double cantidad_ingrediente,int id_ingrediente) {
 
 		boolean alta = false;
@@ -816,7 +899,11 @@ public class BBDD {
 		return alta;
 
 	}
-
+	/**
+	 * 
+	 * @param i dni del cliente
+	 * @return devuelve una lista de los pedidos del cliente
+	 */
 	public ArrayList <String> mostrarPedido(String i) {
 
 		ArrayList <String> lista = new ArrayList <String>();
@@ -836,7 +923,11 @@ public class BBDD {
 			return null;
 		}
 	}
-
+	/**
+	 * 
+	 * @param id id del pedido
+	 * @return devuelve una lista de los platos de ese pedido
+	 */
 	public ArrayList <String> mostrarPlato(int id) {
 
 		ArrayList <String> lista = new ArrayList <String>();

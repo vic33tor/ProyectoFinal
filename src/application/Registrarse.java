@@ -22,7 +22,10 @@ public class Registrarse {
 	@FXML BorderPane bp;
 
 	BBDD bd = new BBDD();
-
+	/**
+	 * metodo que se usa en un boton que al pulsarlo te lleva a la interfaz MainCliente
+	 * @param event se usa para que el botón se pueda pulsar
+	 */
 	@FXML private void goMain(MouseEvent event) {
 		if(!txtDni.getText().isEmpty() && !txtEmail.getText().isEmpty() &&
 				!txtContraseña.getText().isEmpty() && !txtDireccion.getText().isEmpty()) {
@@ -33,14 +36,24 @@ public class Registrarse {
 			JOptionPane.showMessageDialog(null, "Rellene todos los campos para continuar");
 		}
 	}
+	/**
+	 * metodo que se usa en un boton que al pulsarlo te lleva a la interfaz InicioSesion
+	 * @param event se usa para que el botón se pueda pulsar
+	 */
 	@FXML private void goInicioSesion(MouseEvent event) {
 		loadpage("InicioSesion");
 	}
-
+	/**
+	 * metodo que se usa en un boton que al pulsarlo te lleva a la interfaz Inicio
+	 * @param event se usa para que el botón se pueda pulsar
+	 */
 	@FXML private void goInicio(MouseEvent event) {
 		loadpage("Inicio");
 	}
-
+	/**
+	 * metodo para poder cambiar de interfaz
+	 * @param page la interfaz a la que se va a cambiar
+	 */
 	void loadpage(String page) {
 		Parent root = null;
 		try {

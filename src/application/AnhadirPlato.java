@@ -14,19 +14,27 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import src.Aministrador;
+import src.Administrador;
 import src.BBDD;
 import src.Ingrediente;
 import src.Plato;
-
+/**
+ * clase controladora de la interfaz AñadirPlato
+ * @author víctor
+ *
+ */
 public class AnhadirPlato {
-	
+
 	@FXML Button btnAñadir;
 	@FXML TextField txtNombre, txtPrecio;
 	@FXML ComboBox boxTipo;
-	
+
 	BBDD bd = new BBDD();
-	
+	/**
+	 * metodo que se usa en un botón que al pulsarlo se añade a un plato o un ingrediente
+	 * si el plato o ingrediente existe, depende de lo seleccionado en la combobox
+	 * @param event se usa para que el botón se pueda pulsar
+	 */
 	@FXML private void Anhadir(MouseEvent event) {
 		if(!txtNombre.getText().isEmpty() && !txtPrecio.getText().isEmpty() && setBox(event).equals("Plato")) {
 			Double precio = Double.valueOf(txtPrecio.getText());
@@ -43,16 +51,20 @@ public class AnhadirPlato {
 		txtPrecio.clear();
 		boxTipo.getItems().clear();
 	}
-	
+	/**
+	 * metodo que da valores a un combobox
+	 * @param event se usa para que el combobox se pueda pulsar
+	 * @return devuelve lo seleccionado por el usuario en la combobox
+	 */
 	@FXML private Object setBox(MouseEvent event) {
 		ObservableList<String> list = FXCollections.observableArrayList("Plato","Ingrediente");
 		boxTipo.setItems(list);
 		Object s = boxTipo.getValue();
 		return s;
 	}
-	
-	
-	
-	
+
+
+
+
 
 }

@@ -12,15 +12,23 @@ import javafx.scene.input.MouseEvent;
 import src.BBDD;
 import src.Ingrediente;
 import src.Plato;
-
+/**
+ * clase controladora de la interfaz BorrarPlato
+ * @author víctor
+ *
+ */
 public class BorrarPlato {
-	
+
 	@FXML Button btnBorrar;
 	@FXML TextField txtNombre;
 	@FXML ComboBox boxTipo;
-	
+
 	BBDD bd = new BBDD();
-	
+	/**
+	 * metodo que se usa en un botón que al pulsarlo se borra el plato o ingrediente seleccionado si el plato o ingrediente existe,
+	 *  depende de lo que el usuario elija en el combobox
+	 * @param event se usa para que el botón se pueda pulsar
+	 */
 	@FXML private void Borrar(MouseEvent event) {
 		if(!txtNombre.getText().isEmpty() && setBox(event).equals("Plato")) {
 			bd.eliminarPlato_Ingrediente(bd.mostrarID_Plato(txtNombre.getText()));
@@ -33,7 +41,11 @@ public class BorrarPlato {
 		txtNombre.clear();
 		boxTipo.getItems().clear();
 	}
-	
+	/**
+	 * metodo que da valores a un combobox
+	 * @param event se usa para que el combobox se pueda pulsar
+	 * @return devuelve lo seleccionado por el usuario en la combobox
+	 */
 	@FXML private Object setBox(MouseEvent event) {
 		ObservableList<String> list = FXCollections.observableArrayList("Plato","Ingrediente");
 		boxTipo.setItems(list);
