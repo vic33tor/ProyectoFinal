@@ -2,6 +2,7 @@ package application;
 
 import javax.swing.JOptionPane;
 
+import BaseDatos.BBDD;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import src.BBDD;
 /**
  * clase controladora de la interfaz CambiarPrecio
  * @author víctor

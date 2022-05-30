@@ -1,4 +1,4 @@
-package src;
+package BaseDatos;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -8,6 +8,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+
+import src.Cliente;
+import src.Ingrediente;
+import src.Pedido;
+import src.Plato;
 /**
  * Clase para acceder a la base de datos
  * @author víctor
@@ -589,7 +594,7 @@ public class BBDD {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * 
 	 * @param i id del plato

@@ -2,13 +2,13 @@ package application;
 
 import java.io.IOException;
 
+import BaseDatos.BBDD;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import src.BBDD;
 /**
  * clase controladora de la interfaz MainCliente
  * @author víctor

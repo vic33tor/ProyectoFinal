@@ -4,7 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import src.BBDD;
+import BaseDatos.BBDD;
 import src.Cliente;
 
 public class Testdaraltacliente {

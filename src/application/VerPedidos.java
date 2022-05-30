@@ -4,10 +4,11 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import BaseDatos.BBDD;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.text.Text;
-import src.BBDD;
 /**
  * clase controladora de la interfaz VerPedidos
  * @author víctor
@@ -19,7 +20,6 @@ public class VerPedidos implements Initializable{
 	private Text txtPedido;
 
 	BBDD bd = new BBDD();
-
 	/**
 	 * metodo que al inicar la interfaz seteea el texto txtPedido con todos los pedidos del cliente
 	 */

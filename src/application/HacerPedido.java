@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import BaseDatos.BBDD;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,7 +17,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
-import src.BBDD;
 import src.Plato;
 /**
  * clase controladora de la interfaz RealizarPedido
@@ -54,7 +54,6 @@ public class HacerPedido {
 	 * @param event se usa para que el botón se pueda pulsar
 	 */
 	@FXML private void goPagar(MouseEvent event) {
-		System.out.println(bd.c.platos);
 		if (bd.c.platos.size() > 0) {
 			loadpage("Auxiliar");
 

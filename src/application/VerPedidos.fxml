@@ -1,25 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerPedidos">
-  <content>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="378.0" prefWidth="640.0">
-         <children>
-            <Label layoutX="239.0" layoutY="50.0" text="Ver pedidos" textFill="FIREBRICK">
-               <font>
-                  <Font name="Berlin Sans FB Demi Bold" size="31.0" />
-               </font>
-            </Label>
-            <Text fx:id="txtPedido" layoutX="148.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pedidos" textAlignment="CENTER" wrappingWidth="344.89076232910156">
-               <font>
-                  <Font name="Berlin Sans FB Demi Bold" size="14.0" />
-               </font>
-            </Text>
-         </children></AnchorPane>
-  </content>
+   <content>
+      <Text fx:id="txtPedido" strokeType="OUTSIDE" strokeWidth="0.0" text="Pedidos" textAlignment="CENTER" wrappingWidth="636.8907623291016">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="14.0" />
+         </font>
+      </Text>
+   </content>
 </ScrollPane>
